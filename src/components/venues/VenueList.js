@@ -23,20 +23,41 @@ function VenueList() {
   return (
     <>
       <Container>
-        <h4>Venues</h4>
+        <Row>
+          <Col>
+            <h3>Venues</h3>
+          </Col>
+          <Col>
+            {/* <Button variant="success" href={`/venues/${venue.id}`}>
+              Add Venue
+            </Button> */}
+          </Col>
+        </Row>
+
         <div className="venueList">
           <ListGroup>
             {venues.map(venue => (
               <ListGroup.Item key={venue.id}>
                 {/* change link below to nav to auditions for that specific venue */}
-                <Link to={`/${venue.id}`}>
-                  <p>{venue.name}</p>
+                <Link to={`/venues/${venue.id}`}>
+                  <h4>{venue.name}</h4>
                 </Link>
-                <p>{venue.website_url}</p>
+                <p>To visit our website, click the following link:</p>
+                <a href={venue.website_url}>
+                  <p>{venue.website_url}</p>
+                </a>
                 <Row>
                   <Col>
-                    <Button variant="outline-info">
-                      <Link to={`venues/${venue.id}`}>Edit</Link>
+                    <Button
+                      variant="outline-info"
+                      href={`/update-venue/${venue.id}`}
+                    >
+                      Edit
+                    </Button>
+                  </Col>
+                  <Col>
+                    <Button variant="success" href={`/venue/${venue.id}`}>
+                      Open Auditions
                     </Button>
                   </Col>
                 </Row>

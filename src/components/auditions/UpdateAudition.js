@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Button, Form, Col } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
+import moment from 'moment';
 
 function UpdateAudition(props) {
   const { match } = props;
@@ -78,7 +80,7 @@ function UpdateAudition(props) {
     })
       .then(response => response.json())
       .then(response => {
-        window.location.href = 'https://nextgig-be.herokuapp.com/auditions/';
+        window.location.href = 'https://nextgig-fe.herokuapp.com/auditions/';
       })
       .catch(console.error);
   };
@@ -106,13 +108,13 @@ function UpdateAudition(props) {
             <Col>
               <Form.Group>
                 <Form.Label>Venue</Form.Label>
-                <Form.Control as="select" name="venue">
-                  <option value="" disabled defaultValue>
-                    Choose One
-                  </option>
-                  <option value="venue1">Need Venue Variable</option>
-                  <option value="venue2">Need Venue Variable</option>
-                </Form.Control>
+                <Form.Control
+                  type="text"
+                  name="venue"
+                  value={audition.venue}
+                  disabled='true'
+                  onChange={handleChange}
+                ></Form.Control>
               </Form.Group>
             </Col>
           </Form.Row>
@@ -122,7 +124,7 @@ function UpdateAudition(props) {
                 <Form.Label>Date</Form.Label>
                 <Form.Control
                   type="date"
-                  placeholder="Enter a date"
+                  value={audition.date_time}
                   name="date"
                   onChange={handleChange}
                 />
@@ -173,7 +175,7 @@ function UpdateAudition(props) {
             Delete
           </Button>
           <Button variant="outline-secondary" id="cancel">
-            Cancel
+            <Link to={`/auditions/${audition.id}`}>Cancel</Link>
           </Button>
         </Form>
       </div>
