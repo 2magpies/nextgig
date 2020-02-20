@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import AuditionList from './AuditionList';
 import { ListGroup, Container, Button, Row, Col } from 'react-bootstrap';
 
 function AuditionDetail(props) {
@@ -8,7 +7,7 @@ function AuditionDetail(props) {
   const [auditionDetails, setAuditionDetails] = useState([]);
 
   useEffect(() => {
-    const url = `https://nextgig-be.herokuapp.com/auditions/${match.id}`;
+    const url = `https://nextgig-be.herokuapp.com/auditions/${match.params.id}`;
     fetch(url)
       .then(response => response.json())
       .then(response => {

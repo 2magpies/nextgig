@@ -5,6 +5,7 @@ import VenueList from './components/venues/VenueList';
 import AuditionList from './components/auditions/AuditionList';
 import AuditionDetail from './components/auditions/AuditionDetail';
 import PostAudition from './components/auditions/PostAudition';
+import UpdateAudition from './components/auditions/UpdateAudition';
 import { About } from './components/About';
 import { Contact } from './components/Contact';
 import { NoMatch } from './components/NoMatch';
@@ -25,6 +26,7 @@ function App() {
             <Route path="/auditions" component={AuditionList} />
             <Route path="/auditions/:id" component={AuditionDetail} />
             <Route path="/post-audition" component={PostAudition} />
+            <Route path="/update-audition" component={UpdateAudition} />
             <Route path="/about" component={About} />
             <Route path="/contact" component={Contact} />
             <Route component={NoMatch} />
