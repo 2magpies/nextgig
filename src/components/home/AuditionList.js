@@ -46,9 +46,9 @@ function AuditionList() {
               <ListGroup.Item key={audition.id}>
                 <Link to={`/${audition.id}`}>
                   <p>{audition.title}</p>
-                  <p>{audition.description}</p>
                   {/* add venue here */}
                 </Link>
+                <p>{audition.description}</p>
                 <Row>
                   <Col>
                     <Button variant="outline-info">
