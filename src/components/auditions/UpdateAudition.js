@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Button, Card, Form, Col } from 'react-bootstrap';
+import { Button, Form, Col } from 'react-bootstrap';
 
 function UpdateAudition(props) {
   const { match } = props;
@@ -7,7 +7,7 @@ function UpdateAudition(props) {
     
     useEffect(() => {
         getAudition();
-    } []);
+    }, []);
 
     const url = `https://nextgig-be.herokuapp.com/auditions/${match.params.id}`;
 
@@ -36,14 +36,14 @@ function UpdateAudition(props) {
 
     };
 
-    const getAudition() {
+    function getAudition() {
         fetch(url)
             .then(response => response.json())
             .then(response => {
                 setAudition(response);
             })
             .catch(console.error);
-    }
+    };
 
     const putAudition = data => {
         fetch(url, {
@@ -155,3 +155,5 @@ function UpdateAudition(props) {
         </>
     );
 }
+
+export default UpdateAudition;

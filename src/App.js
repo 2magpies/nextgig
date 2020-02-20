@@ -23,8 +23,11 @@ function App() {
         <Router>
           <Switch>
             <Route exact path="/" component={Home} />
-            <Route path="/venues" component={VenueList} />
-            <Route path="/update-venue" component={UpdateVenue} />
+            <Route exact path="/venues" component={VenueList} />
+            <Route exact
+              path="/venues/:id"
+              render={props => <UpdateVenue {...props} />}
+            />
             <Route path="/auditions" component={AuditionList} />
             <Route path="/auditions/:id" component={AuditionDetail} />
             <Route path="/post-audition" component={PostAudition} />

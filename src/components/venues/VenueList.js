@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { ListGroup, Container, Button, Row, Col } from 'react-bootstrap';
-import UpdateVenue from './UpdateVenue';
+// import UpdateVenue from './UpdateVenue';
 
 function VenueList() {
   const [venues, setVenue] = useState([]);
@@ -28,6 +28,7 @@ function VenueList() {
           <ListGroup>
             {venues.map(venue => (
               <ListGroup.Item key={venue.id}>
+                {/* change link below to nav to auditions for that specific venue */}
                 <Link to={`/${venue.id}`}>
                   <p>{venue.name}</p>
                 </Link>
@@ -35,16 +36,16 @@ function VenueList() {
                 <Row>
                   <Col>
                     <Button variant="outline-info">
-                      <Link to={`/${venue.id}/editvenue`}>Edit</Link>
+                      <Link to={`venues/${venue.id}`}>Edit</Link>
                     </Button>
                   </Col>
                 </Row>
               </ListGroup.Item>
             ))}
           </ListGroup>
-          <div>
+          {/* <div>
             <UpdateVenue />
-          </div>
+          </div> */}
         </div>
       </Container>
     </>

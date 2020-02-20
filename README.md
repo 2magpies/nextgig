@@ -18,6 +18,7 @@ https://github.com/adamchainz/django-cors-headers#cors_origin_allow_all
 #### Links for future approaches
 https://tutorial.djangogirls.org/en/deploy/
 https://www.pythonanywhere.com/
+https://blog.bitsrc.io/reusable-components-in-react-a-practical-guide-ec15a81a4d71
 
 
 ### unsplash credits

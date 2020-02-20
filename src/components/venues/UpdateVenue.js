@@ -106,8 +106,13 @@ function UpdateVenue(props) {
             Submit
           </Button>
         </Form>
-        <Button id="delete" onClick={deleteVenue}>
+        <br></br>
+        <Button variant="danger" id="delete" onClick={deleteVenue}>
           Delete Venue
+        </Button>
+        <br></br>
+        <Button variant="outline-secondary" id="cancel" onClick={deleteVenue}>
+          Cancel
         </Button>
       </Card>
     </div>
