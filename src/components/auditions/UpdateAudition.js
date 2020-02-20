@@ -3,13 +3,17 @@ import { Button, Form, Col } from 'react-bootstrap';
 
 function UpdateAudition(props) {
   const { match } = props;
-  const [audition, setAudition] = useState([]);
+  const [audition, setAudition] = useState(null);
 
   useEffect(() => {
     getAudition();
   }, []);
 
   const url = `https://nextgig-be.herokuapp.com/auditions/${match.params.id}`;
+
+  const handleChange = event => {
+    setAudition({ ...audition, [event.target.name]: event.target.value });
+  };
 
   const handleSubmit = event => {
     event.preventDefault();
@@ -48,7 +52,7 @@ function UpdateAudition(props) {
         response.json();
       })
       .then(data => {
-          window.location.href = `https://nextgig-fe.herokuapp.com/update-audition/${audition.id}`;
+        window.location.href = `https://nextgig-fe.herokuapp.com/update-audition/${audition.id}`;
       })
       .catch(error => {
         console.error('Error:', error);
@@ -59,11 +63,10 @@ function UpdateAudition(props) {
     fetch(url)
       .then(response => response.json())
       .then(response => {
-          setAudition(response);
-          console.log(response);
+        setAudition(response);
+        console.log(response);
       })
-        .catch(console.error);
-     
+      .catch(console.error);
   }
 
   const deleteAudition = event => {
@@ -80,6 +83,10 @@ function UpdateAudition(props) {
       .catch(console.error);
   };
 
+  if (!audition) {
+    return null;
+  }
+
   return (
     <>
       <div className="updateAudition">
@@ -90,8 +97,9 @@ function UpdateAudition(props) {
                 <Form.Label>Title</Form.Label>
                 <Form.Control
                   type="text"
-                  placeholder={audition.title}
+                  value={audition.title}
                   name="title"
+                  onChange={handleChange}
                 />
               </Form.Group>
             </Col>
@@ -116,13 +124,14 @@ function UpdateAudition(props) {
                   type="date"
                   placeholder="Enter a date"
                   name="date"
+                  onChange={handleChange}
                 />
               </Form.Group>
             </Col>
             <Col>
               <Form.Group>
                 <Form.Label>Time {audition.time}</Form.Label>
-                <Form.Control type="time" name="time" />
+                <Form.Control type="time" name="time" onChange={handleChange} />
               </Form.Group>
             </Col>
           </Form.Row>
@@ -130,31 +139,41 @@ function UpdateAudition(props) {
             <Form.Label>Location</Form.Label>
             <Form.Control
               type="text"
-              placeholder={audition.location}
+              value={audition.location}
               name="location"
+              onChange={handleChange}
             />
           </Form.Group>
           <Form.Group>
             <Form.Label>Description</Form.Label>
             <Form.Control
               type="text"
-              placeholder={audition.description}
+              value={audition.description}
               name="description"
+              onChange={handleChange}
             />
           </Form.Group>
           <Form.Group>
             <Form.Label>Roles</Form.Label>
             <Form.Control
               type="text"
-              placeholder={audition.roles}
+              value={audition.roles}
               name="roles"
+              onChange={handleChange}
             />
           </Form.Group>
           <Button variant="primary" type="submit">
             Submit
           </Button>
-          <Button variant="outline-danger" id="deleteEventButton" onClick={deleteAudition}>
+          <Button
+            variant="outline-danger"
+            id="deleteEventButton"
+            onClick={deleteAudition}
+          >
             Delete
+          </Button>
+          <Button variant="outline-secondary" id="cancel">
+            Cancel
           </Button>
         </Form>
       </div>

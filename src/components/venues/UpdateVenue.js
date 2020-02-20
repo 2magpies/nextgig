@@ -11,6 +11,10 @@ function UpdateVenue(props) {
 
   const url = `https://nextgig-be.herokuapp.com/venues/${match.params.id}`;
 
+  const handleChange = event => {
+    setVenue({ ...venue, [event.target.name]: event.target.value });
+  };
+
   const handleSubmit = event => {
     event.preventDefault();
 
@@ -85,7 +89,13 @@ function UpdateVenue(props) {
           <Form.Row>
             <Form.Group as={Col} controlId="formGrid">
               <Form.Label>Name</Form.Label>
-              <Form.Control type="text" placeholder={venue.name} name="name" />
+              <Form.Control
+                type="text"
+                value={venue.name}
+                name="name"
+                onChange={handleChange}
+              
+              />
             </Form.Group>
           </Form.Row>
           <Form.Row>
@@ -93,8 +103,9 @@ function UpdateVenue(props) {
               <Form.Label>Email</Form.Label>
               <Form.Control
                 type="text"
-                placeholder={venue.website_url}
+                value={venue.website_url}
                 name="website_url"
+                onChange={handleChange}
               />
             </Form.Group>
           </Form.Row>
@@ -111,7 +122,7 @@ function UpdateVenue(props) {
           Delete Venue
         </Button>
         <br></br>
-        <Button variant="outline-secondary" id="cancel" onClick={deleteVenue}>
+        <Button variant="outline-secondary" id="cancel" >
           Cancel
         </Button>
       </Card>

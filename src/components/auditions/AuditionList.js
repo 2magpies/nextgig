@@ -39,16 +39,16 @@ function AuditionList() {
                 <Link to={`/auditions/${audition.id}`}>
                   <p>{audition.title}</p>
                 </Link>
-                <p><Link to={`/venues/${audition.venue.id}`}>{audition.venue.name}</Link></p>
+                <p>
+                  <Link to={`/venues/${audition.venue.id}`}>
+                    {audition.venue.name}
+                  </Link>
+                </p>
                 {/* <p>{venue_id.name}</p> */}
                 <p>{audition.location}</p>
 
                 <Row>
-                  <Col>
-                    <Button variant="outline-info">
-                      <Link to={`/${audition.id}/editaudition`}>Edit</Link>
-                    </Button>
-                  </Col>
+                  <Col></Col>
                 </Row>
               </ListGroup.Item>
             ))}
