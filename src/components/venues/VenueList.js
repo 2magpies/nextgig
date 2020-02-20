@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { ListGroup, Container, Button, Row, Col } from 'react-bootstrap';
+import UpdateVenue from './UpdateVenue';
 
 function VenueList() {
   const [venues, setVenue] = useState([]);
@@ -29,7 +30,6 @@ function VenueList() {
               <ListGroup.Item key={venue.id}>
                 <Link to={`/${venue.id}`}>
                   <p>{venue.name}</p>
-                  
                 </Link>
                 <p>{venue.website_url}</p>
                 <Row>
@@ -42,6 +42,9 @@ function VenueList() {
               </ListGroup.Item>
             ))}
           </ListGroup>
+          <div>
+            <UpdateVenue />
+          </div>
         </div>
       </Container>
     </>
