@@ -1,5 +1,5 @@
 import React from 'react';
-import AuditionList from '../home/AuditionList';
+import AuditionList from '../auditions/AuditionList';
 
 export const Home = () => (
   <div className="home">
