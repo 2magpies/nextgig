@@ -10,7 +10,16 @@ function AuditionList() {
     fetch(url)
       .then(response => response.json())
       .then(response => {
-        setAuditions(response);
+        response.forEach(audition => {
+          console.log(audition);
+          fetch(audition.venue)
+            .then(response => response.json())
+            .then(response => {
+              audition.venue = response;
+              setAuditions(auditions => [...auditions, audition]);
+              console.log(response);
+            });
+        });
       })
       .catch(console.error);
   }, []);
@@ -21,6 +30,7 @@ function AuditionList() {
   return (
     <>
       <Container>
+        {/* add variable for venue to h4 */}
         <h4>Auditions</h4>
         <div className="auditionList">
           <ListGroup>
@@ -29,11 +39,10 @@ function AuditionList() {
                 <Link to={`/auditions/${audition.id}`}>
                   <p>{audition.title}</p>
                 </Link>
-                <p>{audition.description}</p>
-                <p>{audition.roles}</p>
-                <p>{audition.date_time}</p>
+                <p><Link to={`/venues/${audition.venue.id}`}>{audition.venue.name}</Link></p>
+                {/* <p>{venue_id.name}</p> */}
                 <p>{audition.location}</p>
-                {/* add venue here */}
+
                 <Row>
                   <Col>
                     <Button variant="outline-info">

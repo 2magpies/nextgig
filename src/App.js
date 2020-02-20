@@ -2,6 +2,7 @@ import React from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { Home } from './components/home/Home';
 import VenueList from './components/venues/VenueList';
+import VenueDetail from './components/venues/VenueDetail';
 import UpdateVenue from './components/venues/UpdateVenue';
 import AuditionList from './components/auditions/AuditionList';
 import AuditionDetail from './components/auditions/AuditionDetail';
@@ -24,14 +25,15 @@ function App() {
           <Switch>
             <Route exact path="/" component={Home} />
             <Route exact path="/venues" component={VenueList} />
+            <Route exact path="/venues/:id" component={VenueDetail} />
             <Route exact
               path="/venues/:id"
               render={props => <UpdateVenue {...props} />}
             />
-            <Route path="/auditions" component={AuditionList} />
+            <Route exact path="/auditions" component={AuditionList} />
             <Route path="/auditions/:id" component={AuditionDetail} />
             <Route path="/post-audition" component={PostAudition} />
-            <Route path="/update-audition" component={UpdateAudition} />
+            <Route exact path="/update-audition/:id" component={UpdateAudition} />
             <Route path="/about" component={About} />
             <Route path="/contact" component={Contact} />
             <Route component={NoMatch} />

@@ -55,7 +55,7 @@ function UpdateVenue(props) {
       .then(data => {
         console.log('Success:');
         window.location.href =
-          'https://nextgig-be.herokuapp.com/auditions/update-venue';
+          'https://nextgig-be.herokuapp.com/venues/update-venue';
       })
       .catch(error => {
         console.error('Error:', error);
@@ -72,7 +72,7 @@ function UpdateVenue(props) {
       .then(response => response.json())
       .then(response => {
         window.location.href =
-          'https://nextgig-be.herokuapp.com/auditions/update-venue';
+          'https://nextgig-be.herokuapp.com/venues/update-venue';
       })
       .catch(console.error);
   };

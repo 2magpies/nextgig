@@ -22,24 +22,24 @@ function AuditionDetail(props) {
         <h4>{auditionDetails.title}</h4>
         <div className="auditionDetail">
           <ListGroup>
-            {auditionDetails.map(audition => (
-              <ListGroup.Item key={props.audition.id}>
-                <p>{auditionDetails.description}</p>
-                <p>{auditionDetails.roles}</p>
-                <p>{auditionDetails.date_time}</p>
-                <p>{auditionDetails.location}</p>
-                {/* <Link to={`/venues/${venue.id}`}>
+            <ListGroup.Item key={match.params.id}>
+              <p>{auditionDetails.description}</p>
+              <p>{auditionDetails.roles}</p>
+              <p>{auditionDetails.date_time}</p>
+              <p>{auditionDetails.location}</p>
+              {/* <Link to={`/venues/${venue.id}`}>
                   <p>{venue.name}</p>
                 </Link> */}
-                <Row>
-                  <Col>
-                    <Button variant="outline-info">
-                      <Link to={`/${auditionDetails.title}/editaudition`}>Edit</Link>
-                    </Button>
-                  </Col>
-                </Row>
-              </ListGroup.Item>
-            ))}
+              <Row>
+                <Col>
+                  <Button variant="outline-info">
+                    <Link to={`/update-audition/${auditionDetails.id}`}>
+                      Edit
+                    </Link>
+                  </Button>
+                </Col>
+              </Row>
+            </ListGroup.Item>
           </ListGroup>
         </div>
       </Container>
