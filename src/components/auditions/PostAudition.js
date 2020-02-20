@@ -53,7 +53,7 @@ function PostAudition() {
             </Col>
             <Col>
               <Form.Group>
-                <Form.Label>Category</Form.Label>
+                <Form.Label>Venue</Form.Label>
                 <Form.Control as="select" name="venue">
                   <option value="" disabled defaultValue>
                     Choose One
