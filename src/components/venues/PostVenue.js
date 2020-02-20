@@ -1,6 +1,5 @@
 import React from 'react';
 import { Col, Button, Form, Card } from 'react-bootstrap';
-import VenueList from './VenueList';
 
 function PostVenue() {
   const postNewVenue = userData => {
@@ -16,7 +15,7 @@ function PostVenue() {
       .then(response => response.json())
       .then(userData => {
         console.log('Success:', userData);
-        window.location.href = 'https://nextgig-fe.herokuapp.com/post-venue';
+        window.location.href = 'https://nextgig-fe.herokuapp.com/venues';
       })
       .catch(error => {
         console.error('Error', error);
@@ -27,7 +26,7 @@ function PostVenue() {
     event.preventDefault();
     let venueData = {};
     venueData.name = event.target['name'].value;
-    venueData.email = event.target['email'].value;
+    venueData.email = event.target['website_url'].value;
 
     postNewVenue(venueData);
   };
@@ -66,6 +65,13 @@ function PostVenue() {
 
             <Button variant="primary" type="submit">
               Submit
+            </Button>
+            <Button
+              variant="outline-secondary"
+              id="cancel"
+              href="venues"
+            >
+              Cancel
             </Button>
           </Form>
         </Card>

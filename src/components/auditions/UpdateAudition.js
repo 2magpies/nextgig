@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import { Button, Form, Col } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
 import moment from 'moment';
 
 function UpdateAudition(props) {
@@ -112,7 +111,7 @@ function UpdateAudition(props) {
                   type="text"
                   name="venue"
                   value={audition.venue}
-                  disabled='true'
+                  // disabled='true'
                   onChange={handleChange}
                 ></Form.Control>
               </Form.Group>
@@ -174,8 +173,12 @@ function UpdateAudition(props) {
           >
             Delete
           </Button>
-          <Button variant="outline-secondary" id="cancel">
-            <Link to={`/auditions/${audition.id}`}>Cancel</Link>
+          <Button
+            variant="outline-secondary"
+            id="cancel"
+            href={`/auditions/${audition.id}`}
+          >
+            Cancel
           </Button>
         </Form>
       </div>

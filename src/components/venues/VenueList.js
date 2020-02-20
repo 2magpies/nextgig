@@ -28,9 +28,9 @@ function VenueList() {
             <h3>Venues</h3>
           </Col>
           <Col>
-            {/* <Button variant="success" href={`/venues/${venue.id}`}>
+            <Button variant="success" href="/post-venue">
               Add Venue
-            </Button> */}
+            </Button>
           </Col>
         </Row>
 
@@ -56,7 +56,7 @@ function VenueList() {
                     </Button>
                   </Col>
                   <Col>
-                    <Button variant="success" href={`/venue/${venue.id}`}>
+                    <Button variant="outline-success" href={`/venues/${venue.id}`}>
                       Open Auditions
                     </Button>
                   </Col>

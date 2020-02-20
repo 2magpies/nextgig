@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
-import { Button, Card, Form, Col } from 'react-bootstrap';
+import { Button, Form } from 'react-bootstrap';
 
 function UpdateVenue(props) {
   const { match } = props;
-  const [venue, setVenue] = useState([]);
+  const [venue, setVenue] = useState(null);
 
   useEffect(() => {
     getVenue();
@@ -19,7 +19,6 @@ function UpdateVenue(props) {
     event.preventDefault();
 
     let data = {};
-
     data.name = event.target['name'].value;
     data.website_url = event.target['website_url'].value;
 
@@ -33,19 +32,10 @@ function UpdateVenue(props) {
       }
     }
 
-    updateVenue(data);
+    putVenue(data);
   };
 
-  function getVenue() {
-    fetch(url)
-      .then(response => response.json())
-      .then(response => {
-        setVenue(response);
-      })
-      .catch(console.error);
-  }
-
-  const updateVenue = data => {
+  const putVenue = data => {
     fetch(url, {
       method: 'PUT',
       headers: {
@@ -57,14 +47,22 @@ function UpdateVenue(props) {
         response.json();
       })
       .then(data => {
-        console.log('Success:');
-        window.location.href =
-          'https://nextgig-be.herokuapp.com/venues/update-venue';
+        window.location.href = `https://nextgig-be.herokuapp.com/venues/update-venue/${venue.id}`;
       })
       .catch(error => {
         console.error('Error:', error);
       });
   };
+
+  function getVenue() {
+    fetch(url)
+      .then(response => response.json())
+      .then(response => {
+        setVenue(response);
+        console.log(response);
+      })
+      .catch(console.error);
+  }
 
   const deleteVenue = () => {
     fetch(url, {
@@ -75,32 +73,34 @@ function UpdateVenue(props) {
     })
       .then(response => response.json())
       .then(response => {
-        window.location.href =
-          'https://nextgig-be.herokuapp.com/venues/update-venue';
+        window.location.href = 'https://nextgig-be.herokuapp.com/venues/';
       })
       .catch(console.error);
   };
 
+  if (!venue) {
+    return null;
+  }
+
   return (
-    <div>
-      <h4>Edit Venue</h4>
-      <Card style={{ width: '18rem', padding: '1rem' }}>
+    <>
+      <div>
+        <h4>Edit Venue</h4>
         <Form onSubmit={handleSubmit}>
           <Form.Row>
-            <Form.Group as={Col} controlId="formGrid">
+            <Form.Group>
               <Form.Label>Name</Form.Label>
               <Form.Control
                 type="text"
                 value={venue.name}
                 name="name"
                 onChange={handleChange}
-              
               />
             </Form.Group>
           </Form.Row>
           <Form.Row>
-            <Form.Group as={Col}>
-              <Form.Label>Email</Form.Label>
+            <Form.Group>
+              <Form.Label>Website URL</Form.Label>
               <Form.Control
                 type="text"
                 value={venue.website_url}
@@ -116,17 +116,17 @@ function UpdateVenue(props) {
           <Button variant="primary" type="submit">
             Submit
           </Button>
+          <br></br>
+          <Button variant="danger" id="delete" onClick={deleteVenue}>
+            Delete Venue
+          </Button>
+          <br></br>
+          <Button variant="outline-secondary" id="cancel">
+            Cancel
+          </Button>
         </Form>
-        <br></br>
-        <Button variant="danger" id="delete" onClick={deleteVenue}>
-          Delete Venue
-        </Button>
-        <br></br>
-        <Button variant="outline-secondary" id="cancel" >
-          Cancel
-        </Button>
-      </Card>
-    </div>
+      </div>
+    </>
   );
 }
 

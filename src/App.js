@@ -2,6 +2,7 @@ import React from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { Home } from './components/home/Home';
 import VenueList from './components/venues/VenueList';
+import PostVenue from './components/venues/PostVenue';
 import VenueDetail from './components/venues/VenueDetail';
 import UpdateVenue from './components/venues/UpdateVenue';
 import AuditionList from './components/auditions/AuditionList';
@@ -25,6 +26,7 @@ function App() {
           <Switch>
             <Route exact path="/" component={Home} />
             <Route exact path="/venues" component={VenueList} />
+            <Route path="/post-venue" component={PostVenue} />
             <Route exact path="/venues/:id" component={VenueDetail} />
             <Route exact
               path="/venues/:id"
