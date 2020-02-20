@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { ListGroup, Container, Button, Row, Col } from 'react-bootstrap';
+import { ListGroup, Container, Button, Row, Col, CardColumns, Card } from 'react-bootstrap';
 import moment from 'moment';
 
 function AuditionList() {
@@ -32,7 +32,16 @@ function AuditionList() {
     <>
       <Container>
         {/* add variable for venue to h4 */}
-        <h4>Auditions</h4>
+        <Row>
+          <Col>
+            <h4>Auditions</h4>
+          </Col>
+          <Button variant="success" href="/post-audition">
+            Add Audition
+          </Button>
+        </Row>
+        <br></br>
+
         <div className="auditionList">
           <ListGroup>
             {auditions.map(audition => (
@@ -45,9 +54,12 @@ function AuditionList() {
                     {audition.venue.name}
                   </Link>
                 </p>
-                {/* <p>{venue_id.name}</p> */}
                 <p>{audition.location}</p>
-
+                <p>
+                  {moment(audition.date_time).format(
+                    'dddd, MMMM Do YYYY, h:mm:ss a'
+                  )}
+                </p>
                 <Row>
                   <Col></Col>
                 </Row>

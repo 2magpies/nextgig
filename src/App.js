@@ -16,6 +16,7 @@ import { Layout } from './components/Layout';
 import { NavigationBar } from './components/home/NavigationBar';
 import { Jumbotron } from './components/Jumbotron';
 
+
 function App() {
   return (
     <React.Fragment>
@@ -34,7 +35,10 @@ function App() {
             />
             <Route exact path="/auditions" component={AuditionList} />
             <Route path="/auditions/:id" component={AuditionDetail} />
-            <Route path="/post-audition" component={PostAudition} />
+            <Route exact
+              path="/post-audition"
+              render={props => <PostAudition {...props} />}/>
+              
             <Route exact path="/update-audition/:id" component={UpdateAudition} />
             <Route path="/about" component={About} />
             <Route path="/contact" component={Contact} />

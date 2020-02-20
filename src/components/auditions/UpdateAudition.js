@@ -1,8 +1,18 @@
 import React, { useEffect, useState } from 'react';
-import { Button, Form, Col } from 'react-bootstrap';
+import { Button, Form, Col, Row } from 'react-bootstrap';
+import { Link, useHistory } from 'react-router-dom';
+
 import moment from 'moment';
 
 function UpdateAudition(props) {
+  useEffect(() => {
+    fetch('https://nextgig-be.herokuapp.com/venues/')
+      .then(response => response.json())
+      .then(data => setVenues(data));
+  }, []);
+  const [venues, setVenues] = useState([]);
+
+  let history = useHistory();
   const { match } = props;
   const [audition, setAudition] = useState(null);
 
@@ -53,7 +63,7 @@ function UpdateAudition(props) {
         response.json();
       })
       .then(data => {
-        window.location.href = `https://nextgig-fe.herokuapp.com/update-audition/${audition.id}`;
+        history.push(`/update-audition/${audition.id}`);
       })
       .catch(error => {
         console.error('Error:', error);
@@ -79,7 +89,7 @@ function UpdateAudition(props) {
     })
       .then(response => response.json())
       .then(response => {
-        window.location.href = 'https://nextgig-fe.herokuapp.com/auditions/';
+        history.push('/auditions/');
       })
       .catch(console.error);
   };
@@ -108,12 +118,14 @@ function UpdateAudition(props) {
               <Form.Group>
                 <Form.Label>Venue</Form.Label>
                 <Form.Control
-                  type="text"
+                  as="select"
                   name="venue"
-                  value={audition.venue}
-                  // disabled='true'
-                  onChange={handleChange}
-                ></Form.Control>
+                  value={audition.id.venue}
+                >
+                  {venues.map(venue => (
+                    <option value={venue.id}>{venue.name}</option>
+                  ))}
+                </Form.Control>
               </Form.Group>
             </Col>
           </Form.Row>
@@ -122,8 +134,10 @@ function UpdateAudition(props) {
               <Form.Group>
                 <Form.Label>Date</Form.Label>
                 <Form.Control
-                  type="date"
-                  value={audition.date_time}
+                  // type="date"
+                  value={moment(audition.date_time).format(
+                    'dddd, MMMM Do YYYY'
+                  )}
                   name="date"
                   onChange={handleChange}
                 />
@@ -131,8 +145,15 @@ function UpdateAudition(props) {
             </Col>
             <Col>
               <Form.Group>
-                <Form.Label>Time {audition.time}</Form.Label>
-                <Form.Control type="time" name="time" onChange={handleChange} />
+                <Form.Label>Time </Form.Label>
+                <Form.Control
+                  // type="time"
+                  value={moment(audition.date_time).format(
+                    'h:mm a'
+                  )}
+                  name="time"
+                  onChange={handleChange}
+                />
               </Form.Group>
             </Col>
           </Form.Row>
@@ -163,23 +184,31 @@ function UpdateAudition(props) {
               onChange={handleChange}
             />
           </Form.Group>
-          <Button variant="primary" type="submit">
-            Submit
-          </Button>
-          <Button
-            variant="outline-danger"
-            id="deleteEventButton"
-            onClick={deleteAudition}
-          >
-            Delete
-          </Button>
-          <Button
-            variant="outline-secondary"
-            id="cancel"
-            href={`/auditions/${audition.id}`}
-          >
-            Cancel
-          </Button>
+          <Row>
+            <Col>
+              <Button variant="outline-success" type="submit">
+                Submit
+              </Button>
+            </Col>
+            <Col>
+              <Button
+                variant="outline-danger"
+                id="deleteEventButton"
+                onClick={deleteAudition}
+              >
+                Delete
+              </Button>
+            </Col>
+            <Col>
+              <Button
+                variant="outline-secondary"
+                id="cancel"
+                href={`/auditions/${audition.id}`}
+              >
+                Cancel
+              </Button>
+            </Col>
+          </Row>
         </Form>
       </div>
     </>

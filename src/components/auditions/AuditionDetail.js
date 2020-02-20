@@ -26,7 +26,11 @@ function AuditionDetail(props) {
             <ListGroup.Item key={match.params.id}>
               <p>{auditionDetails.description}</p>
               <p>{auditionDetails.roles}</p>
-              <p>{auditionDetails.date_time}</p>
+              <p>
+                {moment(auditionDetails.date_time).format(
+                  'dddd, MMMM Do YYYY, h:mm:ss a'
+                )}
+              </p>
               <p>{auditionDetails.location}</p>
               {/* <Link to={`/venues/${venue.id}`}>
                   <p>{venue.name}</p>
