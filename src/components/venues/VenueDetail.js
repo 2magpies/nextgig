@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { ListGroup, Container, Button, Row, Col } from 'react-bootstrap';
-import moment from 'moment'
+import moment from 'moment';
 
 function VenueDetail(props) {
   const [venue, setVenue] = useState({});
@@ -41,11 +41,11 @@ function VenueDetail(props) {
                 <h4>{venue.name}</h4>
               </Col>
 
-              <Button variant="outline-info" href="/update-venue/">
+              <Button variant="outline-info" href={`/update-venue/${venue.id}`}>
                 Edit Venue
               </Button>
             </Row>
-            <br/>
+            <br />
             <p>
               Visit our website to learn more about our current season and how
               you can get involved!
