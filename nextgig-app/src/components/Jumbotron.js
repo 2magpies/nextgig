@@ -3,6 +3,7 @@ import { Jumbotron as Jumbo, Container } from 'react-bootstrap';
 import styled from 'styled-components';
 import heroImage from '../assets/heroImage.jpg';
 
+
 const Styles = styled.div`
 .jumbo {
     background: url(${heroImage}) no-repeat fixed bottom;
@@ -15,7 +16,7 @@ const Styles = styled.div`
 
 .overlay {
     background-color: #000;
-    opacity: 0.6;
+    opacity: 0.16;
     position: absolute;
     top: 0;
     left: 0;

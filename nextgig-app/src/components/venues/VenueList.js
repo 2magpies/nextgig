@@ -1,48 +1,68 @@
 import React, { useState, useEffect } from 'react';
-import { Link, useParams } from 'react-router-dom';
-import { CardColumns, Card } from 'react-bootstrap';
-import { ListGroup, Container, Button, Row, Col } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
+import {
+  CardColumns,
+  Card,
+  ListGroup,
+  Container,
+  Button,
+  Row,
+  Col
+} from 'react-bootstrap';
 
-function VenueList(props) {
+const demoVenueList = {
+  name: 'Ponce Playhouse',
+  website_url: 'https://ponceplayhouse.weebly.com/'
+};
+
+function VenueList() {
   const [venues, setVenue] = useState([]);
 
   useEffect(() => {
-    const url = 'https://ibcc.herokuapp.com/users'; //temporary url
-    fetch(url)
+    const url = 'https://nextgig-be.herokuapp.com/venues/';
+    fetch(url, {
+      headers: 'cors'
+    })
       .then(response => response.json())
       .then(response => {
-        setVenue(response);
+        //   setVenue(response);
+        console.log(response);
       })
       .catch(console.error);
   }, []);
   if (!venues) {
     return null;
   }
-
+  //   console.log(venues);
   return (
-    <Styles>
-      <h4>Venues</h4>
-      <div className="">
-        <ListGroup>
-          {venues.map(venue => (
-            <ListGroup.Item key={venue.id}>
-              <Link to={`/${venue.id}`}>
-                <p>
-                  {venue.name} ({venue.website_url})
-                </p>
-              </Link>
-              <Row>
-                <Col>
-                  <Button variant="outline-info">
-                    <Link to={`/${venue.id}/editvenue`}>Edit</Link>
-                  </Button>
-                </Col>
-              </Row>
-            </ListGroup.Item>
-          ))}
-        </ListGroup>
-      </div>
-    </Styles>
+    <>
+      <Container>
+        <h4>Venues</h4>
+        <div className="venueList">
+          <div>
+            <p>{demoVenueList.name}</p>
+            <p>{demoVenueList.website_url}</p>
+          </div>
+          <ListGroup>
+            {venues.map(venue => (
+              <ListGroup.Item key={venue.id}>
+                <Link to={`/${venue.id}`}>
+                  <p>{venue.name}</p>
+                  <p>({venue.website_url})</p>
+                </Link>
+                <Row>
+                  <Col>
+                    <Button variant="outline-info">
+                      <Link to={`/${venue.id}/editvenue`}>Edit</Link>
+                    </Button>
+                  </Col>
+                </Row>
+              </ListGroup.Item>
+            ))}
+          </ListGroup>
+        </div>
+      </Container>
+    </>
   );
 }
 

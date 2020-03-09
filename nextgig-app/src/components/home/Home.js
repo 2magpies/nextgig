@@ -1,10 +1,8 @@
 import React from 'react';
 
 export const Home = () => (
-  <div>
+  <div className="home">
     <h2>Upcoming Auditions</h2>
-    <p>Stare at ceiling</p>
-    <p>Bite the neighbor's bratty kid.</p>
-    <p>meow meow</p>
+    <p>Lorem ipsum</p>
   </div>
 );
