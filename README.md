@@ -11,7 +11,9 @@ https://devcenter.heroku.com/articles/heroku-postgresql#migrating-between-plans
 
 https://devcenter.heroku.com/articles/connecting-to-heroku-postgres-databases-from-outside-of-heroku
 
+https://dev.to/shakib609/deploy-your-django-react-js-app-to-heroku-2bck
 
+https://github.com/adamchainz/django-cors-headers#cors_origin_allow_all
 
 #### Links for future approaches
 https://tutorial.djangogirls.org/en/deploy/

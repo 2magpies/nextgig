@@ -1,14 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import {
-  CardColumns,
-  Card,
-  ListGroup,
-  Container,
-  Button,
-  Row,
-  Col
-} from 'react-bootstrap';
+import { ListGroup, Container, Button, Row, Col } from 'react-bootstrap';
 
 const demoVenueList = {
   name: 'Ponce Playhouse',
@@ -20,9 +12,7 @@ function VenueList() {
 
   useEffect(() => {
     const url = 'https://nextgig-be.herokuapp.com/venues/';
-    fetch(url, {
-      headers: 'cors'
-    })
+    fetch(url)
       .then(response => response.json())
       .then(response => {
         //   setVenue(response);

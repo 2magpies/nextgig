@@ -3,7 +3,6 @@ import { Jumbotron as Jumbo, Container } from 'react-bootstrap';
 import styled from 'styled-components';
 import heroImage from '../assets/heroImage.jpg';
 
-
 const Styles = styled.div`
 .jumbo {
     background: url(${heroImage}) no-repeat fixed bottom;
@@ -31,10 +30,10 @@ export const Jumbotron = () => (
   <Styles>
     <Jumbo fluid className="jumbo">
       <div className="overlay"></div>
-      <container>
+      <Container>
         <h1>Welcome</h1>
         <p>Find an audition. Break a leg. Get your next gig.</p>
-      </container>
+      </Container>
     </Jumbo>
   </Styles>
 );
