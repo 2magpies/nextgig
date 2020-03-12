@@ -7,7 +7,7 @@ function AuditionList() {
   const [auditions, setAuditions] = useState([]);
 
   useEffect(() => {
-    const url = 'https://nextgig-be.herokuapp.com/auditions/';
+    const url = 'https://gigz-be.herokuapp.com/auditions/';
     fetch(url)
       .then(response => response.json())
       .then(response => {
@@ -56,8 +56,13 @@ function AuditionList() {
                 </p>
                 <p>{audition.location}</p>
                 <p>
-                  {moment(audition.date_time).format(
-                    'dddd, MMMM Do YYYY, h:mm:ss a'
+                  {moment(audition.date).format(
+                    'dddd, MMMM Do YYYY'
+                  )}
+                </p>
+                <p>
+                  {moment(audition.time).format(
+                    'h:mm:ss a'
                   )}
                 </p>
                 <Row>

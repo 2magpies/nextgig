@@ -2,25 +2,23 @@ import React from 'react';
 import { Col, Button, Form, Card } from 'react-bootstrap';
 
 function PostVenue() {
-  const postNewVenue = userData => {
-    const venueUrl = 'https://nextgig-be.herokuapp.com/venues/';
+  const postNewVenue = 'https://gigz-be.herokuapp.com/venues/';
 
-    fetch(venueUrl, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(userData)
+  fetch(venueUrl, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(userData)
+  })
+    .then(response => response.json())
+    .then(userData => {
+      console.log('Success:', userData);
+      window.location.href = 'https://gigz-be.herokuapp.com/venues';
     })
-      .then(response => response.json())
-      .then(userData => {
-        console.log('Success:', userData);
-        window.location.href = 'https://nextgig-fe.herokuapp.com/venues';
-      })
-      .catch(error => {
-        console.error('Error', error);
-      });
-  };
+    .catch(error => {
+      console.error('Error', error);
+    });
 
   const handleSubmit = event => {
     event.preventDefault();
@@ -59,26 +57,15 @@ function PostVenue() {
               </Form.Group>
             </Form.Row>
 
-            {/* <Form.Group id="formGridCheckbox">
-                            <Form.Check type="checkbox" label="Admin" />
-                        </Form.Group> */}
-
             <Button variant="primary" type="submit">
               Submit
             </Button>
-            <Button
-              variant="outline-secondary"
-              id="cancel"
-              href="venues"
-            >
+            <Button variant="outline-secondary" id="cancel" href="venues">
               Cancel
             </Button>
           </Form>
         </Card>
       </div>
-      {/* <div>
-                <VenueList />
-            </div> */}
     </div>
   );
 }

@@ -6,7 +6,7 @@ import moment from 'moment';
 
 function UpdateAudition(props) {
   useEffect(() => {
-    fetch('https://nextgig-be.herokuapp.com/venues/')
+    fetch('https://gigz-be.herokuapp.com/venues/')
       .then(response => response.json())
       .then(data => setVenues(data));
   }, []);
@@ -20,7 +20,7 @@ function UpdateAudition(props) {
     getAudition();
   }, []);
 
-  const url = `https://nextgig-be.herokuapp.com/auditions/${match.params.id}`;
+  const url = `hhttps://gigz-be.herokuapp.com/auditions/${match.params.id}`;
 
   const handleChange = event => {
     setAudition({ ...audition, [event.target.name]: event.target.value });
@@ -46,6 +46,7 @@ function UpdateAudition(props) {
         delete data[propName];
       }
     }
+    
 
     putAudition(data);
   };
@@ -99,8 +100,8 @@ function UpdateAudition(props) {
   }
 
   return (
-    <>
-      <div className="updateAudition">
+    
+      <div className="updateAudition" >
         <Form onSubmit={handleSubmit}>
           <Form.Row>
             <Col>
@@ -115,6 +116,7 @@ function UpdateAudition(props) {
               </Form.Group>
             </Col>
             <Col>
+            
               <Form.Group>
                 <Form.Label>Venue</Form.Label>
                 <Form.Control
@@ -123,7 +125,7 @@ function UpdateAudition(props) {
                   value={audition.id.venue}
                 >
                   {venues.map(venue => (
-                    <option value={venue.id}>{venue.name}</option>
+                    <option value={venue.id} key={venue.id}>{venue.name}</option>
                   ))}
                 </Form.Control>
               </Form.Group>
@@ -135,7 +137,7 @@ function UpdateAudition(props) {
                 <Form.Label>Date</Form.Label>
                 <Form.Control
                   // type="date"
-                  value={moment(audition.date_time).format(
+                  value={moment(audition.date).format(
                     'dddd, MMMM Do YYYY'
                   )}
                   name="date"
@@ -148,9 +150,7 @@ function UpdateAudition(props) {
                 <Form.Label>Time </Form.Label>
                 <Form.Control
                   // type="time"
-                  value={moment(audition.date_time).format(
-                    'h:mm a'
-                  )}
+                  value={moment(audition.date_time).format('h:mm a')}
                   name="time"
                   onChange={handleChange}
                 />
@@ -211,8 +211,7 @@ function UpdateAudition(props) {
           </Row>
         </Form>
       </div>
-    </>
+  
   );
 }
-
 export default UpdateAudition;

@@ -8,7 +8,7 @@ function VenueDetail(props) {
   const [auditions, setAuditions] = useState([]);
 
   useEffect(() => {
-    const url = `https://nextgig-be.herokuapp.com/venues/${props.match.params.id}`;
+    const url = `https://gigz-be.herokuapp.com//venues/${props.match.params.id}`;
     fetch(url)
       .then(response => response.json())
       .then(response => {

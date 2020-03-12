@@ -8,7 +8,7 @@ function AuditionDetail(props) {
   const [auditionDetails, setAuditionDetails] = useState([]);
 
   useEffect(() => {
-    const url = `https://nextgig-be.herokuapp.com/auditions/${match.params.id}`;
+    const url = `https://gigz-be.herokuapp.com/auditions/${match.params.id}`;
     fetch(url)
       .then(response => response.json())
       .then(response => {
@@ -27,14 +27,17 @@ function AuditionDetail(props) {
               <p>{auditionDetails.description}</p>
               <p>{auditionDetails.roles}</p>
               <p>
-                {moment(auditionDetails.date_time).format(
-                  'dddd, MMMM Do YYYY, h:mm:ss a'
+                {moment(auditionDetails.date).format(
+                  'dddd, MMMM Do YYYY'
+                )}
+              </p>
+              <p>
+                {moment(auditionDetails.time).format(
+                  'h:mm:ss a'
                 )}
               </p>
               <p>{auditionDetails.location}</p>
-              {/* <Link to={`/venues/${venue.id}`}>
-                  <p>{venue.name}</p>
-                </Link> */}
+              
               <Row>
                 <Col>
                   <Button variant="outline-info">

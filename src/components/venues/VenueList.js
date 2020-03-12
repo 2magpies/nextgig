@@ -7,7 +7,7 @@ function VenueList() {
   const [venues, setVenue] = useState([]);
 
   useEffect(() => {
-    const url = 'https://nextgig-be.herokuapp.com/venues/';
+    const url = 'https://gigz-be.herokuapp.com/venues/';
     fetch(url)
       .then(response => response.json())
       .then(response => {

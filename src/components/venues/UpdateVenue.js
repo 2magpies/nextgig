@@ -9,7 +9,7 @@ function UpdateVenue(props) {
     getVenue();
   }, []);
 
-  const url = `https://nextgig-be.herokuapp.com/venues/${match.params.id}`;
+  const url = `https://gigz-be.herokuapp.com/venues/${match.params.id}`;
 
   const handleChange = event => {
     setVenue({ ...venue, [event.target.name]: event.target.value });
@@ -47,7 +47,7 @@ function UpdateVenue(props) {
         response.json();
       })
       .then(data => {
-        window.location.href = `https://nextgig-be.herokuapp.com/venues/update-venue/${venue.id}`;
+        window.location.href = `https://gigz-be.herokuapp.com/venues/update-venue/${venue.id}`;
       })
       .catch(error => {
         console.error('Error:', error);
@@ -73,7 +73,7 @@ function UpdateVenue(props) {
     })
       .then(response => response.json())
       .then(response => {
-        window.location.href = 'https://nextgig-be.herokuapp.com/venues/';
+        window.location.href = 'https://gigz-be.herokuapp.com/venues/';
       })
       .catch(console.error);
   };

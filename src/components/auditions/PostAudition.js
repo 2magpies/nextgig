@@ -11,31 +11,14 @@ function PostAudition(props) {
   const { audition } = props;
 
   useEffect(() => {
-    fetch('https://nextgig-be.herokuapp.com/venues/')
+    fetch('https://gigz-be.herokuapp.com/venues/')
       .then(response => response.json())
       .then(data => setVenues(data));
   }, []);
   const [venues, setVenues] = useState([]);
 
-
-  
-    // const d = new Date();
-    // const t = document.querySelector('input').value;
-    // const tz = d.getTimezoneOffset() / 60;
-    // arr = t.split(':');
-    // arr[0] = arr[0] - tz;
-    // d.setHours(arr[0]);
-    // d.setMinutes(arr[1]);
-    // console.log(d.toISOString());
-
-    // new Date(audition.date);
-
-
-
-    
-
   const postNewAudition = data => {
-    const url = 'https://nextgig-be.herokuapp.com/auditions/';
+    const url = 'https://gigz-be.herokuapp.com/auditions/';
 
     fetch(url, {
       method: 'POST',
@@ -57,8 +40,8 @@ function PostAudition(props) {
     event.preventDefault();
     let data = {};
     data.title = event.target['title'].value;
-    data.date_time = event.target['date'].value;
-    data.date_time = event.target['time'].value;
+    data.date = event.target['date'].value;
+    data.time = event.target['time'].value;
     data.location = event.target['location'].value;
     data.description = event.target['description'].value;
     data.roles = event.target['roles'].value;
