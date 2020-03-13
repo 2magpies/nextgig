@@ -18,7 +18,7 @@ Full CRUD operations are intended to support the needs of the following users:
 3. As an artistic director that has completed casting for a production, I want to be able to DELETE my posted audition so that irrelevant information is not presented to the live arts community
 4. As a performer, I want to use a single site to REVIEW audition information for multiple venues so that I can find out about many auditions and plan accordingly
 
-##Stretch Goals
+## Stretch Goals
 
 - An artistic director can post sides for the auditions
 - An artistic director can broadcast a casting call for a specific need (unscheduled audition; “contact me if interested” scenario)
