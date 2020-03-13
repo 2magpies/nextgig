@@ -22,7 +22,6 @@ function VenueDetail(props) {
         });
       })
       .catch(console.error);
-    
   }, []);
   if (!venue) {
     return null;
@@ -30,8 +29,6 @@ function VenueDetail(props) {
 
   return (
     <Container>
-      {/* change h4 to specific venue */}
-
       <h4>Venue Details</h4>
 
       <div className="venueList">
@@ -48,7 +45,7 @@ function VenueDetail(props) {
               <br />
               <br></br>
             </Row>
-            
+
             <p>
               Visit our website to learn more about our current season and how
               you can get involved!

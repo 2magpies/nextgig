@@ -65,9 +65,6 @@ function VenueList() {
               </ListGroup.Item>
             ))}
           </ListGroup>
-          {/* <div>
-            <UpdateVenue />
-          </div> */}
         </div>
       </Container>
     </>

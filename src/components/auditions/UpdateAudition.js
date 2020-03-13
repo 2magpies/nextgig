@@ -122,14 +122,6 @@ function UpdateAudition(props) {
                   </option>
                 ))}
               </Form.Control>
-              {/* <Form.Control as="select" name="venue">
-                <option>Choose One</option>
-                {venues.map(venue => (
-                  <option key={venue.id} value={venue.id}>
-                    {venue.name}
-                  </option>
-                ))}
-              </Form.Control> */}
             </Form.Group>
           </Col>
         </Form.Row>

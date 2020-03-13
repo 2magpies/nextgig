@@ -1,12 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import {
-  ListGroup,
-  Container,
-  Button,
-  Row,
-  Col
-} from 'react-bootstrap';
+import { ListGroup, Container, Button, Row, Col } from 'react-bootstrap';
 import moment from 'moment';
 import '../../App.css';
 
@@ -56,13 +50,12 @@ function AuditionList() {
                 <Link to={`/auditions/${audition.id}`}>
                   <h3>{audition.title}</h3>
                 </Link>
-                
-                  <Link to={`/venues/${audition.venue.id}`}>
+
+                <Link to={`/venues/${audition.venue.id}`}>
                   <h5> {audition.venue.name}</h5>
-                  </Link>
-                
+                </Link>
+
                 <h6>{moment(audition.date).format('dddd, MMMM Do, YYYY')}</h6>
-                {/* <p>{audition.time}</p> */}
                 <p>{audition.location}</p>
                 <Row>
                   <Col></Col>
