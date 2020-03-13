@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Button, Form } from 'react-bootstrap';
+import '../../App.css';
 
 function UpdateVenue(props) {
   const { match } = props;

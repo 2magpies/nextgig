@@ -1,13 +1,53 @@
 /* Create color variables */
 :root {
-  --primary: #0480f4;
-  --secondary: #e2856e;
-  --secondary-light: #ada296;
-  --neutral: #88a2aa;
+  --primary: rgb(8, 8, 8);
+  --primary-light: #1e48b7;
+  --secondary: #773f26;
+  --secondary-light: #87321f;
+  --neutral: #c69e72;
   --black: #0f1a20;
   --white: #fff;
 }
 
 body {
   font-family: 'Actor', sans-serif;
+  background-color: var(--primary);
+  /* background-image: image('./assets/heroImage.jpg'); */
+}
+
+h2,
+h3 {
+  color: var(--neutral);
+  font-weight: lighter;
+}
+
+h4 {
+  color: var(--secondary);
+}
+
+h5 {
+  color: var(--secondary);
+}
+
+h6 {
+  color: var(--neutral);
+}
+
+label {
+  color: var(--neutral);
+}
+
+form.Label {
+  color: var(--neutral);
+}
+
+.home {
+  color: var(--neutral);
+}
+
+.logo {
+  width: 3rem;
+}
+p {
+  color: var(--neutral);
 }

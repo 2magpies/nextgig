@@ -1,32 +1,37 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import { useHistory } from 'react-router-dom';
 import { Col, Button, Form, Card } from 'react-bootstrap';
+import '../../App.css';
 
 function PostVenue() {
-  const postNewVenue = 'https://gigz-be.herokuapp.com/venues/';
+  let history = useHistory();
 
-  fetch(venueUrl, {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify(userData)
-  })
-    .then(response => response.json())
-    .then(userData => {
-      console.log('Success:', userData);
-      window.location.href = 'https://gigz-be.herokuapp.com/venues';
+  const postNewVenue = data => {
+    const url = 'https://gigz-be.herokuapp.com/venues/';
+
+    fetch(url, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(data)
     })
-    .catch(error => {
-      console.error('Error', error);
-    });
-
+      .then(response => response.json())
+      .then(data => {
+          history.push('/venues/');
+      })
+      .catch(error => {
+        console.error('Error', error);
+      });
+  };
   const handleSubmit = event => {
     event.preventDefault();
-    let venueData = {};
-    venueData.name = event.target['name'].value;
-    venueData.email = event.target['website_url'].value;
+    let data = {};
+    data.name = event.target['name'].value;
+    data.email = event.target['website_url'].value;
 
-    postNewVenue(venueData);
+    postNewVenue(data);
+  
   };
 
   return (
@@ -48,7 +53,7 @@ function PostVenue() {
 
             <Form.Row>
               <Form.Group as={Col}>
-                <Form.Label>Email</Form.Label>
+                <Form.Label>Website URL</Form.Label>
                 <Form.Control
                   type="text"
                   placeholder="Enter website URL address"
@@ -57,7 +62,7 @@ function PostVenue() {
               </Form.Group>
             </Form.Row>
 
-            <Button variant="primary" type="submit">
+            <Button variant="outline-success" type="submit">
               Submit
             </Button>
             <Button variant="outline-secondary" id="cancel" href="venues">

@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { Link, useHistory } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import { Form, Col, Button } from 'react-bootstrap';
-
-import moment from 'moment';
+import '../../App.css';
 
 
 function PostAudition(props) {
@@ -97,11 +96,7 @@ function PostAudition(props) {
                   type="time"
                   name="time" />
               </Form.Group>
-              {/* <p>
-                {moment(audition.date_time).format(
-                  'dddd, MMMM Do YYYY, h:mm:ss a'
-                )}
-              </p> */}
+              
             </Col>
           </Form.Row>
           <Form.Group>

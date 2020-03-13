@@ -15,6 +15,7 @@ import { NoMatch } from './components/NoMatch';
 import { Layout } from './components/Layout';
 import { NavigationBar } from './components/home/NavigationBar';
 import { Jumbotron } from './components/Jumbotron';
+import './App.css';
 
 
 function App() {

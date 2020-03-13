@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { ListGroup, Container, Button, Row, Col } from 'react-bootstrap';
 import moment from 'moment';
+import '../../App.css';
 
 function AuditionDetail(props) {
   const { match } = props;
@@ -26,26 +27,31 @@ function AuditionDetail(props) {
             <ListGroup.Item key={match.params.id}>
               <p>{auditionDetails.description}</p>
               <p>{auditionDetails.roles}</p>
-              <p>
-                {moment(auditionDetails.date).format(
-                  'dddd, MMMM Do YYYY'
-                )}
-              </p>
-              <p>
+              <p>{moment(auditionDetails.date).format('dddd, MMMM Do YYYY')}</p>
+              <p>{auditionDetails.time}</p>
+              {/* <p>
                 {moment(auditionDetails.time).format(
                   'h:mm:ss a'
                 )}
-              </p>
+              </p> */}
               <p>{auditionDetails.location}</p>
-              
+
               <Row>
                 <Col>
-                  <Button variant="outline-info">
-                    <Link to={`/update-audition/${auditionDetails.id}`}>
-                      Edit
-                    </Link>
+                  <Button
+                    variant="outline-info"
+                    href={`/update-audition/${auditionDetails.id}`}
+                  >
+                    Edit
                   </Button>
                 </Col>
+                <Button
+                  variant="outline-secondary"
+                  id="cancel"
+                  href={'/auditions'}
+                >
+                  Cancel
+                </Button>
               </Row>
             </ListGroup.Item>
           </ListGroup>

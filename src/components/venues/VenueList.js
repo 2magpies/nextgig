@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { ListGroup, Container, Button, Row, Col } from 'react-bootstrap';
-// import UpdateVenue from './UpdateVenue';
+import '../../App.css';
 
 function VenueList() {
   const [venues, setVenue] = useState([]);
@@ -25,13 +25,11 @@ function VenueList() {
       <Container>
         <Row>
           <Col>
-            <h3>Venues</h3>
+            <h4>Venues</h4>
           </Col>
-          <Col>
-            <Button variant="success" href="/post-venue">
-              Add Venue
-            </Button>
-          </Col>
+          <Button variant="success" href="/post-venue">
+            Add Venue
+          </Button>
         </Row>
 
         <div className="venueList">
@@ -56,7 +54,10 @@ function VenueList() {
                     </Button>
                   </Col>
                   <Col>
-                    <Button variant="outline-success" href={`/venues/${venue.id}`}>
+                    <Button
+                      variant="outline-success"
+                      href={`/venues/${venue.id}`}
+                    >
                       Open Auditions
                     </Button>
                   </Col>

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Button, Form, Col, Row } from 'react-bootstrap';
-import { Link, useHistory } from 'react-router-dom';
-
+import { useHistory } from 'react-router-dom';
+import '../../App.css';
 import moment from 'moment';
 
 function UpdateAudition(props) {
@@ -20,7 +20,7 @@ function UpdateAudition(props) {
     getAudition();
   }, []);
 
-  const url = `hhttps://gigz-be.herokuapp.com/auditions/${match.params.id}`;
+  const url = `https://gigz-be.herokuapp.com/auditions/${match.params.id}`;
 
   const handleChange = event => {
     setAudition({ ...audition, [event.target.name]: event.target.value });
@@ -46,7 +46,6 @@ function UpdateAudition(props) {
         delete data[propName];
       }
     }
-    
 
     putAudition(data);
   };
@@ -64,7 +63,7 @@ function UpdateAudition(props) {
         response.json();
       })
       .then(data => {
-        history.push(`/update-audition/${audition.id}`);
+        history.push(`/auditions/${audition.id}`);
       })
       .catch(error => {
         console.error('Error:', error);
@@ -88,9 +87,8 @@ function UpdateAudition(props) {
         'Content-Type': 'application/json'
       }
     })
-      .then(response => response.json())
       .then(response => {
-        history.push('/auditions/');
+        history.push('/auditions');
       })
       .catch(console.error);
   };
@@ -100,118 +98,119 @@ function UpdateAudition(props) {
   }
 
   return (
-    
-      <div className="updateAudition" >
-        <Form onSubmit={handleSubmit}>
-          <Form.Row>
-            <Col>
-              <Form.Group>
-                <Form.Label>Title</Form.Label>
-                <Form.Control
-                  type="text"
-                  value={audition.title}
-                  name="title"
-                  onChange={handleChange}
-                />
-              </Form.Group>
-            </Col>
-            <Col>
-            
-              <Form.Group>
-                <Form.Label>Venue</Form.Label>
-                <Form.Control
-                  as="select"
-                  name="venue"
-                  value={audition.id.venue}
-                >
-                  {venues.map(venue => (
-                    <option value={venue.id} key={venue.id}>{venue.name}</option>
-                  ))}
-                </Form.Control>
-              </Form.Group>
-            </Col>
-          </Form.Row>
-          <Form.Row>
-            <Col>
-              <Form.Group>
-                <Form.Label>Date</Form.Label>
-                <Form.Control
-                  // type="date"
-                  value={moment(audition.date).format(
-                    'dddd, MMMM Do YYYY'
-                  )}
-                  name="date"
-                  onChange={handleChange}
-                />
-              </Form.Group>
-            </Col>
-            <Col>
-              <Form.Group>
-                <Form.Label>Time </Form.Label>
-                <Form.Control
-                  // type="time"
-                  value={moment(audition.date_time).format('h:mm a')}
-                  name="time"
-                  onChange={handleChange}
-                />
-              </Form.Group>
-            </Col>
-          </Form.Row>
-          <Form.Group>
-            <Form.Label>Location</Form.Label>
-            <Form.Control
-              type="text"
-              value={audition.location}
-              name="location"
-              onChange={handleChange}
-            />
-          </Form.Group>
-          <Form.Group>
-            <Form.Label>Description</Form.Label>
-            <Form.Control
-              type="text"
-              value={audition.description}
-              name="description"
-              onChange={handleChange}
-            />
-          </Form.Group>
-          <Form.Group>
-            <Form.Label>Roles</Form.Label>
-            <Form.Control
-              type="text"
-              value={audition.roles}
-              name="roles"
-              onChange={handleChange}
-            />
-          </Form.Group>
-          <Row>
-            <Col>
-              <Button variant="outline-success" type="submit">
-                Submit
-              </Button>
-            </Col>
-            <Col>
-              <Button
-                variant="outline-danger"
-                id="deleteEventButton"
-                onClick={deleteAudition}
-              >
-                Delete
-              </Button>
-            </Col>
-            <Col>
-              <Button
-                variant="outline-secondary"
-                id="cancel"
-                href={`/auditions/${audition.id}`}
-              >
-                Cancel
-              </Button>
-            </Col>
-          </Row>
-        </Form>
-      </div>
-  
+    <div className="updateAudition">
+      <Form onSubmit={handleSubmit}>
+        <Form.Row>
+          <Col>
+            <Form.Group>
+              <Form.Label>Title</Form.Label>
+              <Form.Control
+                type="text"
+                value={audition.title}
+                name="title"
+                onChange={handleChange}
+              />
+            </Form.Group>
+          </Col>
+          <Col>
+            <Form.Group>
+              <Form.Label>Venue</Form.Label>
+              <Form.Control as="select" name="venue" value={audition.venue}>
+                {venues.map(venue => (
+                  <option value={venue.id} key={venue.id}>
+                    {venue.name}
+                  </option>
+                ))}
+              </Form.Control>
+              {/* <Form.Control as="select" name="venue">
+                <option>Choose One</option>
+                {venues.map(venue => (
+                  <option key={venue.id} value={venue.id}>
+                    {venue.name}
+                  </option>
+                ))}
+              </Form.Control> */}
+            </Form.Group>
+          </Col>
+        </Form.Row>
+        <Form.Row>
+          <Col>
+            <Form.Group>
+              <Form.Label>Date</Form.Label>
+              <Form.Control
+                type="date"
+                value={moment(audition.date).format('YYYY-MM-DD')}
+                name="date"
+                onChange={handleChange}
+              />
+            </Form.Group>
+          </Col>
+          <Col>
+            <Form.Group>
+              <Form.Label>Time </Form.Label>
+              <Form.Control
+                // type="time"
+                value={moment(audition.date_time).format('h:mm a')}
+                name="time"
+                onChange={handleChange}
+              />
+            </Form.Group>
+          </Col>
+        </Form.Row>
+        <Form.Group>
+          <Form.Label>Location</Form.Label>
+          <Form.Control
+            type="text"
+            value={audition.location}
+            name="location"
+            onChange={handleChange}
+          />
+        </Form.Group>
+        <Form.Group>
+          <Form.Label>Description</Form.Label>
+          <Form.Control
+            type="text"
+            value={audition.description}
+            name="description"
+            onChange={handleChange}
+          />
+        </Form.Group>
+        <Form.Group>
+          <Form.Label>Roles</Form.Label>
+          <Form.Control
+            type="text"
+            value={audition.roles}
+            name="roles"
+            onChange={handleChange}
+          />
+        </Form.Group>
+        <Row>
+          <Col>
+            <Button variant="outline-success" type="submit">
+              Submit
+            </Button>
+          </Col>
+          <Col>
+            <Button
+              variant="outline-danger"
+              id="deleteEventButton"
+              onClick={deleteAudition}
+            >
+              Delete
+            </Button>
+          </Col>
+          <Col>
+            <Button
+              variant="outline-secondary"
+              id="cancel"
+              href={`/auditions/${audition.id}`}
+            >
+              Cancel
+            </Button>
+          </Col>
+        </Row>
+      </Form>
+    </div>
   );
 }
 export default UpdateAudition;

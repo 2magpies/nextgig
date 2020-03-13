@@ -1,20 +1,20 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
 import { ListGroup, Container, Button, Row, Col } from 'react-bootstrap';
 import moment from 'moment';
+import '../../App.css';
 
 function VenueDetail(props) {
   const [venue, setVenue] = useState({});
   const [auditions, setAuditions] = useState([]);
 
   useEffect(() => {
-    const url = `https://gigz-be.herokuapp.com//venues/${props.match.params.id}`;
+    const url = `https://gigz-be.herokuapp.com/venues/${props.match.params.id}`;
     fetch(url)
       .then(response => response.json())
       .then(response => {
         setVenue(response);
         response.auditions.forEach(url => {
-          fetch(url)
+          fetch(`https://gigz-be.herokuapp.com/auditions/${venue.audition}`)
             .then(response => response.json())
             .then(response => {
               setAuditions(auditions => [...auditions, response]);
@@ -22,6 +22,7 @@ function VenueDetail(props) {
         });
       })
       .catch(console.error);
+    
   }, []);
   if (!venue) {
     return null;
@@ -31,7 +32,7 @@ function VenueDetail(props) {
     <Container>
       {/* change h4 to specific venue */}
 
-      <h2>Venue Details</h2>
+      <h4>Venue Details</h4>
 
       <div className="venueList">
         <ListGroup>
@@ -44,8 +45,10 @@ function VenueDetail(props) {
               <Button variant="outline-info" href={`/update-venue/${venue.id}`}>
                 Edit Venue
               </Button>
+              <br />
+              <br></br>
             </Row>
-            <br />
+            
             <p>
               Visit our website to learn more about our current season and how
               you can get involved!
@@ -59,15 +62,12 @@ function VenueDetail(props) {
         <h5>Upcoming Auditions</h5>
         {auditions.map(audition => (
           <div key={audition.id}>
-            <h6>{audition.title}</h6>
-            <ul>
-              <li>
-                {moment(audition.date_time).format(
-                  'dddd, MMMM Do YYYY, h:mm:ss a'
-                )}
-              </li>
-              <li>{audition.location}</li>
-            </ul>
+            <h4>{audition.title}</h4>
+            <p>{audition.description}</p>
+            <p>{audition.roles}</p>
+            <p>{moment(audition.date).format('dddd, MMMM Do YYYY')}</p>
+            <p>{audition.time}</p>
+            <p>{audition.location}</p>
           </div>
         ))}
       </div>

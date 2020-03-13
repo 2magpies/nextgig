@@ -1,6 +1,7 @@
 import React from 'react';
 import { Nav, Navbar } from 'react-bootstrap';
 import styled from 'styled-components';
+import logo from '../../assets/ng-logo2.png';
 
 const Styles = styled.div`
   .navbar {
@@ -21,7 +22,7 @@ const Styles = styled.div`
 export const NavigationBar = () => (
   <Styles>
     <Navbar expand="lg">
-      <Navbar.Brand href="/">NextGig</Navbar.Brand>
+      <Navbar.Brand href="/"><img src={logo} className="logo"/></Navbar.Brand>
       <Navbar.Toggle aria-controls="basic-navbar-nav"></Navbar.Toggle>
       <Navbar.Collapse id="basic-navbar-nav">
         <Nav className="ml-auto">

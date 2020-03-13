@@ -1,7 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { ListGroup, Container, Button, Row, Col, CardColumns, Card } from 'react-bootstrap';
+import {
+  ListGroup,
+  Container,
+  Button,
+  Row,
+  Col
+} from 'react-bootstrap';
 import moment from 'moment';
+import '../../App.css';
 
 function AuditionList() {
   const [auditions, setAuditions] = useState([]);
@@ -13,7 +20,7 @@ function AuditionList() {
       .then(response => {
         response.forEach(audition => {
           console.log(audition);
-          fetch(audition.venue)
+          fetch(`https://gigz-be.herokuapp.com/venues/${audition.venue}`)
             .then(response => response.json())
             .then(response => {
               audition.venue = response;
@@ -47,24 +54,16 @@ function AuditionList() {
             {auditions.map(audition => (
               <ListGroup.Item key={audition.id}>
                 <Link to={`/auditions/${audition.id}`}>
-                  <p>{audition.title}</p>
+                  <h3>{audition.title}</h3>
                 </Link>
-                <p>
+                
                   <Link to={`/venues/${audition.venue.id}`}>
-                    {audition.venue.name}
+                  <h5> {audition.venue.name}</h5>
                   </Link>
-                </p>
+                
+                <h6>{moment(audition.date).format('dddd, MMMM Do, YYYY')}</h6>
+                {/* <p>{audition.time}</p> */}
                 <p>{audition.location}</p>
-                <p>
-                  {moment(audition.date).format(
-                    'dddd, MMMM Do YYYY'
-                  )}
-                </p>
-                <p>
-                  {moment(audition.time).format(
-                    'h:mm:ss a'
-                  )}
-                </p>
                 <Row>
                   <Col></Col>
                 </Row>
