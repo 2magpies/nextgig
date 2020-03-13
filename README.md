@@ -2,7 +2,7 @@
 
 **NextGig** provides a single resource for performers to find upcoming auditions.
 
-![Home]('./src/assets/ng-homepage.png)
+![Home](/src/assets/ng-homepage.png)
 
 ## Project Description
 
