@@ -22,7 +22,9 @@ const Styles = styled.div`
 export const NavigationBar = () => (
   <Styles>
     <Navbar expand="lg">
-      <Navbar.Brand href="/"><img src={logo} className="logo"/></Navbar.Brand>
+      <Navbar.Brand href="/">
+        <img src={logo} className="logo" />
+      </Navbar.Brand>
       <Navbar.Toggle aria-controls="basic-navbar-nav"></Navbar.Toggle>
       <Navbar.Collapse id="basic-navbar-nav">
         <Nav className="ml-auto">
@@ -31,12 +33,6 @@ export const NavigationBar = () => (
           </Nav.Item>
           <Nav.Item>
             <Nav.Link href="/venues">Venues</Nav.Link>
-          </Nav.Item>
-          <Nav.Item>
-            <Nav.Link href="/about">About</Nav.Link>
-          </Nav.Item>
-          <Nav.Item>
-            <Nav.Link href="/contact">Contact</Nav.Link>
           </Nav.Item>
         </Nav>
       </Navbar.Collapse>
