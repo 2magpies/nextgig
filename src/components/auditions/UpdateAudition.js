@@ -18,7 +18,7 @@ function UpdateAudition(props) {
 
   useEffect(() => {
     getAudition();
-  }, []);
+  }, );
 
   const url = `https://gigz-be.herokuapp.com/auditions/${match.params.id}`;
 
