@@ -53,21 +53,18 @@ function VenueList() {
                       Edit
                     </Button>
                   </Col>
-                  <Col>
+                  {/* <Col>
                     <Button
                       variant="outline-success"
                       href={`/venues/${venue.id}`}
                     >
                       Open Auditions
                     </Button>
-                  </Col>
+                  </Col> */}
                 </Row>
               </ListGroup.Item>
             ))}
           </ListGroup>
-          {/* <div>
-            <UpdateVenue />
-          </div> */}
         </div>
       </Container>
     </>

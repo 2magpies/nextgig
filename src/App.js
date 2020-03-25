@@ -17,7 +17,6 @@ import { NavigationBar } from './components/home/NavigationBar';
 import { Jumbotron } from './components/Jumbotron';
 import './App.css';
 
-
 function App() {
   return (
     <React.Fragment>
@@ -30,19 +29,24 @@ function App() {
             <Route exact path="/venues" component={VenueList} />
             <Route path="/post-venue" component={PostVenue} />
             <Route exact path="/venues/:id" component={VenueDetail} />
-            <Route exact
+            <Route
+              exact
               path="/venues/:id"
               render={props => <UpdateVenue {...props} />}
             />
             <Route exact path="/auditions" component={AuditionList} />
             <Route path="/auditions/:id" component={AuditionDetail} />
-            <Route exact
+            <Route
+              exact
               path="/post-audition"
-              render={props => <PostAudition {...props} />}/>
-              
-            <Route exact path="/update-audition/:id" component={UpdateAudition} />
-            <Route path="/about" component={About} />
-            <Route path="/contact" component={Contact} />
+              render={props => <PostAudition {...props} />}
+            />
+
+            <Route
+              exact
+              path="/update-audition/:id"
+              component={UpdateAudition}
+            />
             <Route component={NoMatch} />
           </Switch>
         </Router>

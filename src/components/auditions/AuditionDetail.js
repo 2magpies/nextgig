@@ -29,13 +29,7 @@ function AuditionDetail(props) {
               <p>{auditionDetails.roles}</p>
               <p>{moment(auditionDetails.date).format('dddd, MMMM Do YYYY')}</p>
               <p>{auditionDetails.time}</p>
-              {/* <p>
-                {moment(auditionDetails.time).format(
-                  'h:mm:ss a'
-                )}
-              </p> */}
               <p>{auditionDetails.location}</p>
-
               <Row>
                 <Col>
                   <Button
