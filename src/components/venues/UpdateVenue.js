@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Button, Form } from 'react-bootstrap';
+// import { useHistory } from 'react-router-dom';
 import '../../App.css';
 
 function UpdateVenue(props) {
@@ -8,7 +9,7 @@ function UpdateVenue(props) {
 
   useEffect(() => {
     getVenue();
-  }, []);
+  }, );
 
   const url = `https://gigz-be.herokuapp.com/venues/${match.params.id}`;
 
